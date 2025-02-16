@@ -4,12 +4,11 @@ using Range = Microsoft.Office.Interop.Excel.Range;
 
 namespace ExcelDna.RuntimeTests
 {
-#if DEBUG
     [ExcelTestSettings(OutOfProcess = true)]
     [Collection("OutOfProcess")]
     public class ObjectHandleOutOfProcess
     {
-        [ExcelFact(Workbook = "", AddIn = @"..\..\..\..\ExcelDna.AddIn.RuntimeTests\bin\Debug\net6.0-windows\ExcelDna.AddIn.RuntimeTests-AddIn")]
+        [ExcelFact(Workbook = "", AddIn = AddInPath.RuntimeTests)]
         public void ThreadSafe()
         {
             for (int i = 1; i <= 5; ++i)
@@ -31,7 +30,7 @@ namespace ExcelDna.RuntimeTests
             }
         }
 
-        [ExcelFact(Workbook = "", AddIn = @"..\..\..\..\ExcelDna.AddIn.RuntimeTests\bin\Debug\net6.0-windows\ExcelDna.AddIn.RuntimeTests-AddIn")]
+        [ExcelFact(Workbook = "", AddIn = AddInPath.RuntimeTests)]
         public void Disposable()
         {
             {
@@ -75,7 +74,7 @@ namespace ExcelDna.RuntimeTests
             }
         }
 
-        [ExcelFact(Workbook = "", AddIn = @"..\..\..\..\ExcelDna.AddIn.RuntimeTests\bin\Debug\net6.0-windows\ExcelDna.AddIn.RuntimeTests-AddIn")]
+        [ExcelFact(Workbook = "", AddIn = AddInPath.RuntimeTests)]
         public void TaskObjectStableCreate()
         {
             string v1;
@@ -105,7 +104,7 @@ namespace ExcelDna.RuntimeTests
             }
         }
 
-        [ExcelFact(Workbook = "", AddIn = @"..\..\..\..\ExcelDna.AddIn.RuntimeTests\bin\Debug\net6.0-windows\ExcelDna.AddIn.RuntimeTests-AddIn")]
+        [ExcelFact(Workbook = "", AddIn = AddInPath.RuntimeTests)]
         public void TaskDisposable()
         {
             foreach (int delay in new[] { 0, 500 })
@@ -154,7 +153,7 @@ namespace ExcelDna.RuntimeTests
             }
         }
 
-        [ExcelFact(Workbook = "", AddIn = @"..\..\..\..\ExcelDna.AddIn.RuntimeTests\bin\Debug\net6.0-windows\ExcelDna.AddIn.RuntimeTests-AddIn")]
+        [ExcelFact(Workbook = "", AddIn = AddInPath.RuntimeTests)]
         public void AsyncObjectCreate()
         {
             foreach (int delay in new[] { 0, 500 })
@@ -183,5 +182,4 @@ namespace ExcelDna.RuntimeTests
             }
         }
     }
-#endif
 }

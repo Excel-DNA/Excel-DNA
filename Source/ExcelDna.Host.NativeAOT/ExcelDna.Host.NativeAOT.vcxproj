@@ -24,8 +24,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{a9887347-3e93-4e4e-96df-227648e57b60}</ProjectGuid>
-    <RootNamespace>ExcelDnaHost</RootNamespace>
+    <ProjectGuid>{D50C3A8E-46F1-F61B-C8F5-ECDA05995EEB}</ProjectGuid>
+    <RootNamespace>ExcelDnaHostNativeAOT</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <TargetFramework>net5.0-windows</TargetFramework>
   </PropertyGroup>
@@ -117,7 +117,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalDependencies>$(ProjectDir)Lib\$(PlatformTarget)\libnethost.lib;advapi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>advapi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SuppressStartupBanner>false</SuppressStartupBanner>
       <IgnoreAllDefaultLibraries>
       </IgnoreAllDefaultLibraries>
@@ -135,7 +135,7 @@
       <PreprocessorDefinitions>WIN32;EXCELDNAHOST_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <AdditionalIncludeDirectories>$(ProjectDir)Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <WholeProgramOptimization>false</WholeProgramOptimization>
       <SuppressStartupBanner>false</SuppressStartupBanner>
@@ -147,7 +147,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalDependencies>$(ProjectDir)Lib\$(PlatformTarget)\libnethost.lib;advapi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>advapi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SuppressStartupBanner>false</SuppressStartupBanner>
       <IgnoreAllDefaultLibraries>
       </IgnoreAllDefaultLibraries>
@@ -163,7 +163,7 @@
       <PreprocessorDefinitions>EXCELDNAHOST_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <AdditionalIncludeDirectories>$(ProjectDir)Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <SuppressStartupBanner>false</SuppressStartupBanner>
@@ -173,7 +173,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalDependencies>$(ProjectDir)Lib\$(PlatformTarget)\libnethost.lib;advapi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>advapi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SuppressStartupBanner>false</SuppressStartupBanner>
       <IgnoreAllDefaultLibraries>
       </IgnoreAllDefaultLibraries>
@@ -191,7 +191,7 @@
       <PreprocessorDefinitions>EXCELDNAHOST_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <AdditionalIncludeDirectories>$(ProjectDir)Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <WholeProgramOptimization>false</WholeProgramOptimization>
       <SuppressStartupBanner>false</SuppressStartupBanner>
@@ -203,7 +203,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalDependencies>$(ProjectDir)Lib\$(PlatformTarget)\libnethost.lib;advapi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>advapi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SuppressStartupBanner>false</SuppressStartupBanner>
       <IgnoreAllDefaultLibraries>
       </IgnoreAllDefaultLibraries>
@@ -213,15 +213,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup>
-    <PostBuildEvent>
-      <Command>
-        copy "$(SolutionDir)ExcelDna.ManagedHost\bin\$(Configuration)\net6.0-windows\ExcelDna.ManagedHost.*" "$(TargetDir)"
-        copy "$(SolutionDir)ExcelDna.Loader\bin\$(Configuration)\net6.0-windows\ExcelDna.Loader.*" "$(TargetDir)"
-        copy "$(SolutionDir)ExcelDna.Integration\bin\$(Configuration)\net6.0-windows\ExcelDna.Integration.*" "$(TargetDir)"
-        "$(SolutionDir)ExcelDnaPack\bin\$(Configuration)\net6.0-windows\ExcelDnaPack.exe" PackXllBuild "$(OutDir)$(TargetName).xll" $(Configuration)
-      </Command>
-      <Message>Copying ExcelDna.ManagedHost, ExcelDna.Loader and ExcelDna.Integration to target dir</Message>
-    </PostBuildEvent>
     <ClCompile>
       <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdcpp20</LanguageStandard>
       <ExceptionHandling Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Async</ExceptionHandling>
@@ -243,9 +234,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="host.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Notes.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

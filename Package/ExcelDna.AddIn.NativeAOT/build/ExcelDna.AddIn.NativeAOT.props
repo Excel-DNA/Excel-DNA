@@ -1,0 +1,7 @@
+<Project>
+	<PropertyGroup>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<UseWindowsForms>true</UseWindowsForms>
+		<SelfContained>true</SelfContained>
+	</PropertyGroup>
+</Project>

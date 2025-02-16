@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <ItemsProjectGuid>{65ccad73-fe1a-47f7-b8ac-3603919c49fe}</ItemsProjectGuid>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectCapability Include="SourceItemsFromImports" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)addin.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)dnainfo.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)exports32.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)loader.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)LPenHelper.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)main.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)TempDir.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)utils.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)dnainfo.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)exports.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)host.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)loader.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)LPenHelper.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)resource.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)TempDir.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)utils.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="$(MSBuildThisFileDirectory)ExcelDna.Host.rc" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(Platform)'=='x64'">
+    <MASM Include="$(MSBuildThisFileDirectory)exports64.asm" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)exports.def" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata minClientVersion="2.5">
+        <id>ExcelDna.AddIn.NativeAOT</id>
+        <version>$ExcelDnaNativeAOTVersion$</version>
+        <title>Excel-DNA Add-In NativeAOT</title>
+        <authors>Govert van Drimmelen</authors>
+        <owners>Govert van Drimmelen</owners>
+        <projectUrl>http://excel-dna.net</projectUrl>
+        <repository type="git" url="https://github.com/Excel-DNA/ExcelDna" />
+        <icon>images\ExcelDna-nu.png</icon>
+        <license type="expression">Zlib</license>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>
+          Excel-DNA eases the development of Excel add-ins using .NET.
+          Add-ins created with Excel-DNA can export high-performance user-defined functions and macros, and can be packed into a single file for easy distribution and installation.
+
+          Excel versions 2007 through 2021 / Office 365 can be targeted with a single add-in.
+          Advanced Excel features are supported, including multi-threaded recalculation, registration-free RTD servers and customized Ribbon and Task Pane interfaces and asynchronous functions.
+
+          Excel-DNA supports .NET Framework version 4.6.2 to 4.8.1, and .NET 6.0+
+
+          The Excel-DNA Runtime is free for all use, and distributed under a permissive open-source license that also allows commercial use.</description>
+        <summary>Excel-DNA is an independent project to integrate .NET into Excel.</summary>
+        <tags>excel exceldna udf excel-dna</tags>
+      <dependencies>
+        <group targetFramework="net6.0-windows7.0" />
+      </dependencies>
+    </metadata>
+    <files>
+      <file src="..\..\Distribution\net462\ExcelDna.Integration.dll" target="tools\net462\ExcelDna.Integration.dll" />
+      <file src="..\ExcelDna.AddIn\tools\net462\ExcelDna.AddIn.Tasks.dll" target="tools\net462\ExcelDna.AddIn.Tasks.dll" />
+      <file src="..\ExcelDna.AddIn\tools\net462\EnvDTE.dll" target="tools\net462\EnvDTE.dll" />
+      <file src="..\ExcelDna.AddIn\tools\net462\Newtonsoft.Json.dll" target="tools\net462\Newtonsoft.Json.dll" />
+      <file src="..\ExcelDna.AddIn\tools\net462\Microsoft.Extensions.DependencyModel.dll" target="tools\net462\Microsoft.Extensions.DependencyModel.dll" />
+
+      <file src="..\..\Distribution\net6.0-windows\ExcelDna.Integration.dll" target="tools\net6.0-windows7.0\ExcelDna.Integration.dll" />
+      <file src="..\ExcelDna.AddIn\tools\net6.0-windows\ExcelDna.AddIn.Tasks.dll" target="tools\net6.0-windows7.0\ExcelDna.AddIn.Tasks.dll" />
+      <file src="..\ExcelDna.AddIn\tools\net6.0-windows\AsmResolver.dll" target="tools\net6.0-windows7.0\AsmResolver.dll" />
+      <file src="..\ExcelDna.AddIn\tools\net6.0-windows\AsmResolver.PE.dll" target="tools\net6.0-windows7.0\AsmResolver.PE.dll" />
+      <file src="..\ExcelDna.AddIn\tools\net6.0-windows\AsmResolver.PE.File.dll" target="tools\net6.0-windows7.0\AsmResolver.PE.File.dll" />
+      
+      <file src="lib\net6.0-windows\ExcelDna.Integration.dll" target="lib\net6.0-windows7.0\ExcelDna.Integration.dll" />
+      <file src="lib\net6.0-windows\ExcelDna.ManagedHost.dll" target="lib\net6.0-windows7.0\ExcelDna.ManagedHost.dll" />
+      <file src="lib\net6.0-windows\ExcelDna.Loader.dll" target="lib\net6.0-windows7.0\ExcelDna.Loader.dll" />
+      
+      <file src="analyzers\dotnet\cs\ExcelDna.SourceGenerator.NativeAOT.dll" target="analyzers\dotnet\cs" />
+      
+      <file src="build\ExcelDna.AddIn.NativeAOT.props" target="build" />
+      <file src="build\ExcelDna.AddIn.NativeAOT.targets" target="build" />
+      <file src="tools\ExcelDnaNativeAOT64.xll" target="tools" />
+      <file src="..\images\ExcelDna-nu.png" target="images\" />
+    </files>
+</package>

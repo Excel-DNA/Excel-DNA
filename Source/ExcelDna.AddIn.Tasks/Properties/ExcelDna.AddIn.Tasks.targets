@@ -22,6 +22,7 @@
 
     <ItemGroup>
       <ExcelDnaTestFilesToCopyToRoot Include="..\..\Package\ExcelDna.AddIn\**\*.*" />
+      <ExcelDnaTestFilesToCopyToRoot Include="..\..\Package\ExcelDna.AddIn.NativeAOT\**\*.*" />
     </ItemGroup>
 
     <Copy SourceFiles="@(ExcelDnaTestFilesToCopyToRoot)"
@@ -48,6 +49,38 @@
 		Condition="Exists('$(ProjectDir)..\ExcelDna.Host\bin\$(Configuration)\x86\ExcelDna.Host.x86.xll')"
 		SourceFiles="$(ProjectDir)..\ExcelDna.Host\bin\$(Configuration)\x86\ExcelDna.Host.x86.xll"
 		DestinationFiles="$(ExcelDnaTestPackageDir)tools\net6.0-windows\ExcelDna.xll"
+		ContinueOnError="false"
+		OverwriteReadOnlyFiles="true"
+		SkipUnchangedFiles="true" />
+
+	<Copy 
+        Condition="Exists('$(ProjectDir)..\ExcelDna.Host.NativeAOT\bin\$(Configuration)\x64\ExcelDna.Host.NativeAOT.x64.xll')"
+        SourceFiles="$(ProjectDir)..\ExcelDna.Host.NativeAOT\bin\$(Configuration)\x64\ExcelDna.Host.NativeAOT.x64.xll"
+        DestinationFiles="$(ExcelDnaTestPackageDir)tools\ExcelDnaNativeAOT64.xll"
+        ContinueOnError="false"
+        OverwriteReadOnlyFiles="true"
+        SkipUnchangedFiles="true" />
+
+	<Copy 
+		Condition="Exists('$(ProjectDir)..\ExcelDna.SourceGenerator.NativeAOT\bin\$(Configuration)\netstandard2.0\ExcelDna.SourceGenerator.NativeAOT.dll')"
+		SourceFiles="$(ProjectDir)..\ExcelDna.SourceGenerator.NativeAOT\bin\$(Configuration)\netstandard2.0\ExcelDna.SourceGenerator.NativeAOT.dll"
+		DestinationFiles="$(ExcelDnaTestPackageDir)analyzers\ExcelDna.SourceGenerator.NativeAOT.dll"
+		ContinueOnError="false"
+		OverwriteReadOnlyFiles="true"
+		SkipUnchangedFiles="true" />
+
+	<Copy 
+		Condition="Exists('$(ProjectDir)..\ExcelDna.ManagedHost\bin\$(Configuration)\net6.0-windows\ExcelDna.ManagedHost.dll')"
+		SourceFiles="$(ProjectDir)..\ExcelDna.ManagedHost\bin\$(Configuration)\net6.0-windows\ExcelDna.ManagedHost.dll"
+		DestinationFiles="$(ExcelDnaTestPackageDir)tools\net6.0-windows\ExcelDna.ManagedHost.dll"
+		ContinueOnError="false"
+		OverwriteReadOnlyFiles="true"
+		SkipUnchangedFiles="true" />
+
+	<Copy 
+		Condition="Exists('$(ProjectDir)..\ExcelDna.Loader\bin\$(Configuration)\net6.0-windows\ExcelDna.Loader.dll')"
+		SourceFiles="$(ProjectDir)..\ExcelDna.Loader\bin\$(Configuration)\net6.0-windows\ExcelDna.Loader.dll"
+		DestinationFiles="$(ExcelDnaTestPackageDir)tools\net6.0-windows\ExcelDna.Loader.dll"
 		ContinueOnError="false"
 		OverwriteReadOnlyFiles="true"
 		SkipUnchangedFiles="true" />

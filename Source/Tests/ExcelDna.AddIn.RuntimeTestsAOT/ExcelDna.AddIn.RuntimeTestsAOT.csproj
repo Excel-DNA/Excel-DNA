@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <PublishAOT>true</PublishAOT>
+    <TargetName>ExcelDna.AddIn.RuntimeTestsAOT64</TargetName>
+
+    <UseWindowsForms>true</UseWindowsForms>
+    <SelfContained>true</SelfContained>
+
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+  </PropertyGroup>
+
+  <Target Name="SetNoBuild">
+    <PropertyGroup>
+      <NoBuild>true</NoBuild>
+    </PropertyGroup>
+  </Target>
+  <Target Name="PublishAfterBuild" AfterTargets="AfterBuild" DependsOnTargets="SetNoBuild;Publish" />
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\ExcelDna.ManagedHost\ExcelDna.ManagedHost.csproj" />
+    <ProjectReference Include="..\..\ExcelDna.SourceGenerator.NativeAOT\ExcelDna.SourceGenerator.NativeAOT.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+  </ItemGroup>
+
+  <Target Name="PostBuildAOT" AfterTargets="PublishAfterBuild">
+    <Exec Command='xcopy /y "$(SolutionDir)ExcelDna.Host.NativeAOT\bin\$(ConfigurationName)\x64\ExcelDna.Host.NativeAOT.x64.xll" "$(TargetDir)publish\ExcelDna.AddIn.RuntimeTestsAOT64.xll*"&#xD;&#xA;' />
+  </Target>
+
+</Project>

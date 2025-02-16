@@ -1,8 +1,9 @@
 setlocal
 
 set PackageVersion=%1
-set DllVersion=%2
-set MSBuildPath=%3
+set PackageNativeAOTVersion=%2
+set DllVersion=%3
+set MSBuildPath=%4
 
 set rcfile=..\Source\versioninfo.rc2
 PowerShell "(Get-Content %rcfile%) -replace '\d+,\d+,\d+,\d+', '%DllVersion%'.Replace('.',',') -replace '\d+\.\d+\.\d+\.\d+', '%DllVersion%' | Set-Content %rcfile%"
@@ -18,7 +19,7 @@ call build.bat
 @if errorlevel 1 goto end
 
 cd ..\Package
-call package.cmd %PackageVersion%
+call package.cmd %PackageVersion% %PackageNativeAOTVersion%
 @if errorlevel 1 goto end
 
 set pushfile=push.cmd

@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <PublishAOT>true</PublishAOT>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="ExcelDna.Integration">
+      <HintPath>..\..\.exceldna.addin\tools\net6.0-windows7.0\ExcelDna.Integration.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelDna.ManagedHost.dll">
+      <HintPath>..\..\.exceldna.addin\tools\net6.0-windows7.0\ExcelDna.ManagedHost.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelDna.Loader.dll">
+      <HintPath>..\..\.exceldna.addin\tools\net6.0-windows7.0\ExcelDna.Loader.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Analyzer Include="..\..\.exceldna.addin\analyzers\ExcelDna.SourceGenerator.NativeAOT.dll" />
+  </ItemGroup>
+
+  <Import Project="$(ProjectDir)..\..\.exceldna.addin\build\ExcelDna.AddIn.NativeAOT.props" />
+  <Import Project="$(ProjectDir)..\..\.exceldna.addin\build\ExcelDna.AddIn.NativeAOT.targets" />
+
+</Project>

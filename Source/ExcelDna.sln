@@ -24,6 +24,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExcelDna.AddIn.Tasks", "Exc
 	ProjectSection(ProjectDependencies) = postProject
 		{A8D668E2-63C1-4F4E-A01E-E026C6E4D601} = {A8D668E2-63C1-4F4E-A01E-E026C6E4D601}
 		{A9887347-3E93-4E4E-96DF-227648E57B60} = {A9887347-3E93-4E4E-96DF-227648E57B60}
+		{D50C3A8E-46F1-F61B-C8F5-ECDA05995EEB} = {D50C3A8E-46F1-F61B-C8F5-ECDA05995EEB}
+		{DAF494B7-16F3-AAA7-5F71-234663023BB6} = {DAF494B7-16F3-AAA7-5F71-234663023BB6}
 		{FD7F2EE3-9922-4825-96A2-BE2C877BAEB9} = {FD7F2EE3-9922-4825-96A2-BE2C877BAEB9}
 	EndProjectSection
 EndProject
@@ -131,6 +133,19 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "ExcelDna.AddIn.Registration
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelDna.RegistrationTests", "Tests\ExcelDna.RegistrationTests\ExcelDna.RegistrationTests.csproj", "{151AE960-6320-402D-BDD0-D76DF96F2BD7}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ExcelDna.Host.Shared", "ExcelDna.Host.Shared\ExcelDna.Host.Shared.vcxitems", "{65CCAD73-FE1A-47F7-B8AC-3603919C49FE}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ExcelDna.Host.NativeAOT", "ExcelDna.Host.NativeAOT\ExcelDna.Host.NativeAOT.vcxproj", "{D50C3A8E-46F1-F61B-C8F5-ECDA05995EEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelDna.SourceGenerator.NativeAOT", "ExcelDna.SourceGenerator.NativeAOT\ExcelDna.SourceGenerator.NativeAOT.csproj", "{DAF494B7-16F3-AAA7-5F71-234663023BB6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelDna.AddIn.RuntimeTestsAOT", "Tests\ExcelDna.AddIn.RuntimeTestsAOT\ExcelDna.AddIn.RuntimeTestsAOT.csproj", "{1EC2EE86-7C59-4CA9-9D6A-FBF206DA9D3F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{196735BC-5A5C-4A21-9FE4-EC01CB7F3DE9} = {196735BC-5A5C-4A21-9FE4-EC01CB7F3DE9}
+		{59AE5BC6-F37E-4CE3-BAE3-796F807A9882} = {59AE5BC6-F37E-4CE3-BAE3-796F807A9882}
+		{D50C3A8E-46F1-F61B-C8F5-ECDA05995EEB} = {D50C3A8E-46F1-F61B-C8F5-ECDA05995EEB}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -188,11 +203,9 @@ Global
 		{C9CAD3E4-E6F1-4BD2-AF89-57950AB15388}.Release|x64.ActiveCfg = Release|Any CPU
 		{C9CAD3E4-E6F1-4BD2-AF89-57950AB15388}.Release|x64.Build.0 = Release|Any CPU
 		{3AFD9408-48AC-43B4-8E55-4E7D73168FEA}.Debug|Win32.ActiveCfg = Debug|Any CPU
-		{3AFD9408-48AC-43B4-8E55-4E7D73168FEA}.Debug|Win32.Build.0 = Debug|Any CPU
 		{3AFD9408-48AC-43B4-8E55-4E7D73168FEA}.Debug|x64.ActiveCfg = Debug|Any CPU
 		{3AFD9408-48AC-43B4-8E55-4E7D73168FEA}.Debug|x64.Build.0 = Debug|Any CPU
 		{3AFD9408-48AC-43B4-8E55-4E7D73168FEA}.Release|Win32.ActiveCfg = Release|Any CPU
-		{3AFD9408-48AC-43B4-8E55-4E7D73168FEA}.Release|Win32.Build.0 = Release|Any CPU
 		{3AFD9408-48AC-43B4-8E55-4E7D73168FEA}.Release|x64.ActiveCfg = Release|Any CPU
 		{3AFD9408-48AC-43B4-8E55-4E7D73168FEA}.Release|x64.Build.0 = Release|Any CPU
 		{DC10CEC8-C6CE-4148-838F-C3DD4EA2A2A3}.Debug|Win32.ActiveCfg = Debug|Any CPU
@@ -240,35 +253,27 @@ Global
 		{238F95C5-87DF-4973-88C2-5A9509C3935F}.Release|x64.ActiveCfg = Release|Any CPU
 		{238F95C5-87DF-4973-88C2-5A9509C3935F}.Release|x64.Build.0 = Release|Any CPU
 		{8D04B68B-1EFE-48DC-A0B5-D7ACC293694B}.Debug|Win32.ActiveCfg = Debug|Any CPU
-		{8D04B68B-1EFE-48DC-A0B5-D7ACC293694B}.Debug|Win32.Build.0 = Debug|Any CPU
 		{8D04B68B-1EFE-48DC-A0B5-D7ACC293694B}.Debug|x64.ActiveCfg = Debug|Any CPU
 		{8D04B68B-1EFE-48DC-A0B5-D7ACC293694B}.Debug|x64.Build.0 = Debug|Any CPU
 		{8D04B68B-1EFE-48DC-A0B5-D7ACC293694B}.Release|Win32.ActiveCfg = Release|Any CPU
-		{8D04B68B-1EFE-48DC-A0B5-D7ACC293694B}.Release|Win32.Build.0 = Release|Any CPU
 		{8D04B68B-1EFE-48DC-A0B5-D7ACC293694B}.Release|x64.ActiveCfg = Release|Any CPU
 		{8D04B68B-1EFE-48DC-A0B5-D7ACC293694B}.Release|x64.Build.0 = Release|Any CPU
 		{55AEB960-2857-323E-3E82-5A8AA5913A18}.Debug|Win32.ActiveCfg = Debug|Any CPU
-		{55AEB960-2857-323E-3E82-5A8AA5913A18}.Debug|Win32.Build.0 = Debug|Any CPU
 		{55AEB960-2857-323E-3E82-5A8AA5913A18}.Debug|x64.ActiveCfg = Debug|Any CPU
 		{55AEB960-2857-323E-3E82-5A8AA5913A18}.Debug|x64.Build.0 = Debug|Any CPU
 		{55AEB960-2857-323E-3E82-5A8AA5913A18}.Release|Win32.ActiveCfg = Release|Any CPU
-		{55AEB960-2857-323E-3E82-5A8AA5913A18}.Release|Win32.Build.0 = Release|Any CPU
 		{55AEB960-2857-323E-3E82-5A8AA5913A18}.Release|x64.ActiveCfg = Release|Any CPU
 		{55AEB960-2857-323E-3E82-5A8AA5913A18}.Release|x64.Build.0 = Release|Any CPU
 		{2F5539CC-E302-49B6-88A9-9264DC6413B3}.Debug|Win32.ActiveCfg = Debug|Any CPU
-		{2F5539CC-E302-49B6-88A9-9264DC6413B3}.Debug|Win32.Build.0 = Debug|Any CPU
 		{2F5539CC-E302-49B6-88A9-9264DC6413B3}.Debug|x64.ActiveCfg = Debug|Any CPU
 		{2F5539CC-E302-49B6-88A9-9264DC6413B3}.Debug|x64.Build.0 = Debug|Any CPU
 		{2F5539CC-E302-49B6-88A9-9264DC6413B3}.Release|Win32.ActiveCfg = Release|Any CPU
-		{2F5539CC-E302-49B6-88A9-9264DC6413B3}.Release|Win32.Build.0 = Release|Any CPU
 		{2F5539CC-E302-49B6-88A9-9264DC6413B3}.Release|x64.ActiveCfg = Release|Any CPU
 		{2F5539CC-E302-49B6-88A9-9264DC6413B3}.Release|x64.Build.0 = Release|Any CPU
 		{7CA501E1-FB74-4903-B34D-EFE513C5B428}.Debug|Win32.ActiveCfg = Debug|Any CPU
-		{7CA501E1-FB74-4903-B34D-EFE513C5B428}.Debug|Win32.Build.0 = Debug|Any CPU
 		{7CA501E1-FB74-4903-B34D-EFE513C5B428}.Debug|x64.ActiveCfg = Debug|Any CPU
 		{7CA501E1-FB74-4903-B34D-EFE513C5B428}.Debug|x64.Build.0 = Debug|Any CPU
 		{7CA501E1-FB74-4903-B34D-EFE513C5B428}.Release|Win32.ActiveCfg = Release|Any CPU
-		{7CA501E1-FB74-4903-B34D-EFE513C5B428}.Release|Win32.Build.0 = Release|Any CPU
 		{7CA501E1-FB74-4903-B34D-EFE513C5B428}.Release|x64.ActiveCfg = Release|Any CPU
 		{7CA501E1-FB74-4903-B34D-EFE513C5B428}.Release|x64.Build.0 = Release|Any CPU
 		{151AE960-6320-402D-BDD0-D76DF96F2BD7}.Debug|Win32.ActiveCfg = Debug|Any CPU
@@ -279,6 +284,28 @@ Global
 		{151AE960-6320-402D-BDD0-D76DF96F2BD7}.Release|Win32.Build.0 = Release|Any CPU
 		{151AE960-6320-402D-BDD0-D76DF96F2BD7}.Release|x64.ActiveCfg = Release|Any CPU
 		{151AE960-6320-402D-BDD0-D76DF96F2BD7}.Release|x64.Build.0 = Release|Any CPU
+		{D50C3A8E-46F1-F61B-C8F5-ECDA05995EEB}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D50C3A8E-46F1-F61B-C8F5-ECDA05995EEB}.Debug|Win32.Build.0 = Debug|Win32
+		{D50C3A8E-46F1-F61B-C8F5-ECDA05995EEB}.Debug|x64.ActiveCfg = Debug|x64
+		{D50C3A8E-46F1-F61B-C8F5-ECDA05995EEB}.Debug|x64.Build.0 = Debug|x64
+		{D50C3A8E-46F1-F61B-C8F5-ECDA05995EEB}.Release|Win32.ActiveCfg = Release|Win32
+		{D50C3A8E-46F1-F61B-C8F5-ECDA05995EEB}.Release|Win32.Build.0 = Release|Win32
+		{D50C3A8E-46F1-F61B-C8F5-ECDA05995EEB}.Release|x64.ActiveCfg = Release|x64
+		{D50C3A8E-46F1-F61B-C8F5-ECDA05995EEB}.Release|x64.Build.0 = Release|x64
+		{DAF494B7-16F3-AAA7-5F71-234663023BB6}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{DAF494B7-16F3-AAA7-5F71-234663023BB6}.Debug|Win32.Build.0 = Debug|Any CPU
+		{DAF494B7-16F3-AAA7-5F71-234663023BB6}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{DAF494B7-16F3-AAA7-5F71-234663023BB6}.Debug|x64.Build.0 = Debug|Any CPU
+		{DAF494B7-16F3-AAA7-5F71-234663023BB6}.Release|Win32.ActiveCfg = Release|Any CPU
+		{DAF494B7-16F3-AAA7-5F71-234663023BB6}.Release|Win32.Build.0 = Release|Any CPU
+		{DAF494B7-16F3-AAA7-5F71-234663023BB6}.Release|x64.ActiveCfg = Release|Any CPU
+		{DAF494B7-16F3-AAA7-5F71-234663023BB6}.Release|x64.Build.0 = Release|Any CPU
+		{1EC2EE86-7C59-4CA9-9D6A-FBF206DA9D3F}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{1EC2EE86-7C59-4CA9-9D6A-FBF206DA9D3F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{1EC2EE86-7C59-4CA9-9D6A-FBF206DA9D3F}.Debug|x64.Build.0 = Debug|Any CPU
+		{1EC2EE86-7C59-4CA9-9D6A-FBF206DA9D3F}.Release|Win32.ActiveCfg = Release|Any CPU
+		{1EC2EE86-7C59-4CA9-9D6A-FBF206DA9D3F}.Release|x64.ActiveCfg = Release|Any CPU
+		{1EC2EE86-7C59-4CA9-9D6A-FBF206DA9D3F}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -297,14 +324,18 @@ Global
 		{2F5539CC-E302-49B6-88A9-9264DC6413B3} = {511CE610-5E55-457F-B818-1522D1A96727}
 		{7CA501E1-FB74-4903-B34D-EFE513C5B428} = {511CE610-5E55-457F-B818-1522D1A96727}
 		{151AE960-6320-402D-BDD0-D76DF96F2BD7} = {511CE610-5E55-457F-B818-1522D1A96727}
+		{1EC2EE86-7C59-4CA9-9D6A-FBF206DA9D3F} = {511CE610-5E55-457F-B818-1522D1A96727}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {69EF43B0-B903-4775-BC81-C7E7E012EDA3}
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		ExcelDna.PackedResources\ExcelDna.PackedResources.projitems*{28d046d4-b414-4daf-818f-897a97b921df}*SharedItemsImports = 5
+		ExcelDna.Host.Shared\ExcelDna.Host.Shared.vcxitems*{65ccad73-fe1a-47f7-b8ac-3603919c49fe}*SharedItemsImports = 9
 		ExcelDna.PackedResources\ExcelDna.PackedResources.projitems*{7ebb8fa9-a153-422e-b454-144c3fb03450}*SharedItemsImports = 13
+		ExcelDna.Host.Shared\ExcelDna.Host.Shared.vcxitems*{a9887347-3e93-4e4e-96df-227648e57b60}*SharedItemsImports = 4
 		ExcelDna.PackedResources\ExcelDna.PackedResources.projitems*{b5cc04d3-0507-4431-9f45-7c60bac3047a}*SharedItemsImports = 5
+		ExcelDna.Host.Shared\ExcelDna.Host.Shared.vcxitems*{d50c3a8e-46f1-f61b-c8f5-ecda05995eeb}*SharedItemsImports = 4
 		ExcelDna.PackedResources\ExcelDna.PackedResources.projitems*{dc10cec8-c6ce-4148-838f-c3dd4ea2a2a3}*SharedItemsImports = 5
 		ExcelDna.PackedResources\ExcelDna.PackedResources.projitems*{fd7f2ee3-9922-4825-96a2-be2c877baeb9}*SharedItemsImports = 5
 	EndGlobalSection

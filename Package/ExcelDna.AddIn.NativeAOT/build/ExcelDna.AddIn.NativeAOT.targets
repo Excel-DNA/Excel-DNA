@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <ExcelDnaToolsPath Condition="$(ExcelDnaToolsPath) == '' Or $(ExcelDnaToolsPath) == '*Undefined*'">$(MSBuildThisFileDirectory)..\tools\</ExcelDnaToolsPath>
+  </PropertyGroup>
+
+	<PropertyGroup Condition="'$(MSBuildRuntimeType)' == 'Core'">
+		<ExcelDnaTasksPath>$(ExcelDnaToolsPath)net6.0-windows7.0\</ExcelDnaTasksPath>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(MSBuildRuntimeType)' != 'Core'">
+		<ExcelDnaTasksPath>$(ExcelDnaToolsPath)net462\</ExcelDnaTasksPath>
+	</PropertyGroup>
+	
+	<UsingTask TaskName="ExcelDna.AddIn.Tasks.PackExcelAddInNativeAOT" AssemblyFile="$(ExcelDnaTasksPath)ExcelDna.AddIn.Tasks.dll" />
+
+  <!--
+    Default values for configuration properties - in case they were not set in via .props file or command-line
+  -->
+  <PropertyGroup>
+    <ExcelDnaPackRunMultithreaded Condition="'$(ExcelDnaPackRunMultithreaded)' == ''">true</ExcelDnaPackRunMultithreaded>
+  </PropertyGroup>
+
+	<Target Name="ExcelDnaAddInNativeAOTPublish" AfterTargets="Publish">
+		<PackExcelAddInNativeAOT
+			Xll64FilePath="$(ExcelDnaToolsPath)ExcelDnaNativeAOT64.xll"
+			ProjectName="$(MSBuildProjectName)"
+			PublishDir="$(PublishDir)"
+			RunMultithreaded="$(ExcelDnaPackRunMultithreaded)"
+			PackManagedOnWindows="$(ExcelDnaPackManagedResourcePackingOnWindows)"
+		>
+		</PackExcelAddInNativeAOT>
+	</Target>
+
+</Project>

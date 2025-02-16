@@ -21,6 +21,9 @@ copy /Y ..\Source\ExcelDnaPack\bin\Release\net6.0-windows\ExcelDnaPack.runtimeco
 
 if not exist "..\Package\ExcelDna.AddIn\tools\net462\" mkdir "..\Package\ExcelDna.AddIn\tools\net462\"
 if not exist "..\Package\ExcelDna.AddIn\tools\net6.0-windows\" mkdir "..\Package\ExcelDna.AddIn\tools\net6.0-windows\"
+if not exist "..\Package\ExcelDna.AddIn.NativeAOT\tools\" mkdir "..\Package\ExcelDna.AddIn.NativeAOT\tools\"
+if not exist "..\Package\ExcelDna.AddIn.NativeAOT\lib\net6.0-windows\" mkdir "..\Package\ExcelDna.AddIn.NativeAOT\lib\net6.0-windows\"
+if not exist "..\Package\ExcelDna.AddIn.NativeAOT\analyzers\dotnet\cs" mkdir "..\Package\ExcelDna.AddIn.NativeAOT\analyzers\dotnet\cs"
 
 copy /Y ..\Source\ExcelDna.AddIn.Tasks\bin\Release\net462\ExcelDna.AddIn.Tasks.dll ..\Package\ExcelDna.AddIn\tools\net462\
 copy /Y ..\Source\ExcelDna.AddIn.Tasks\bin\Release\net462\ExcelDna.AddIn.Tasks.pdb ..\Package\ExcelDna.AddIn\tools\net462\
@@ -30,6 +33,12 @@ copy /Y ..\Source\ExcelDna.AddIn.Tasks\bin\Release\net462\System.Reflection.Meta
 copy /Y ..\Source\ExcelDna.AddIn.Tasks\bin\Release\net462\System.Collections.Immutable.dll ..\Package\ExcelDna.AddIn\tools\net462\
 copy /Y ..\Source\ExcelDna.AddIn.Tasks\bin\Release\net6.0-windows\ExcelDna.AddIn.Tasks.dll ..\Package\ExcelDna.AddIn\tools\net6.0-windows\
 copy /Y ..\Source\ExcelDna.AddIn.Tasks\bin\Release\net6.0-windows\ExcelDna.AddIn.Tasks.pdb ..\Package\ExcelDna.AddIn\tools\net6.0-windows\
+
+copy /Y "..\Source\ExcelDna.Integration\bin\Release\net6.0-windows\ExcelDna.Integration.dll" "..\Package\ExcelDna.AddIn.NativeAOT\lib\net6.0-windows\"
+copy /Y "..\Source\ExcelDna.ManagedHost\bin\Release\net6.0-windows\ExcelDna.ManagedHost.dll" "..\Package\ExcelDna.AddIn.NativeAOT\lib\net6.0-windows\"
+copy /Y "..\Source\ExcelDna.Loader\bin\Release\net6.0-windows\ExcelDna.Loader.dll" "..\Package\ExcelDna.AddIn.NativeAOT\lib\net6.0-windows\"
+copy /Y "..\Source\ExcelDna.SourceGenerator.NativeAOT\bin\Release\netstandard2.0\ExcelDna.SourceGenerator.NativeAOT.dll" "..\Package\ExcelDna.AddIn.NativeAOT\analyzers\dotnet\cs\"
+copy /Y "..\Source\ExcelDna.Host.NativeAOT\bin\Release\x64\ExcelDna.Host.NativeAOT.x64.xll" "..\Package\ExcelDna.AddIn.NativeAOT\tools\ExcelDnaNativeAOT64.xll"
 
 copy /Y ..\Distribution\net462\ ..\Distribution\
 

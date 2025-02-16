@@ -3,10 +3,9 @@ using Range = Microsoft.Office.Interop.Excel.Range;
 
 namespace ExcelDna.RuntimeTests
 {
-#if DEBUG
     public class RegistrationSample
     {
-        [ExcelFact(Workbook = "", AddIn = @"..\..\..\..\ExcelDna.AddIn.RegistrationSample\bin\Debug\net6.0-windows\ExcelDna.AddIn.RegistrationSample-AddIn")]
+        [ExcelFact(Workbook = "", AddIn = AddInPath.RegistrationSample)]
         public void SayHello()
         {
             {
@@ -21,7 +20,7 @@ namespace ExcelDna.RuntimeTests
             }
         }
 
-        [ExcelFact(Workbook = "", AddIn = @"..\..\..\..\ExcelDna.AddIn.RegistrationSample\bin\Debug\net6.0-windows\ExcelDna.AddIn.RegistrationSample-AddIn")]
+        [ExcelFact(Workbook = "", AddIn = AddInPath.RegistrationSample)]
         public void FunctionExecutionHandler()
         {
             Range functionRange = ((Worksheet)ExcelDna.Testing.Util.Workbook.Sheets[1]).Range["B1"];
@@ -52,7 +51,7 @@ namespace ExcelDna.RuntimeTests
             }
         }
 
-        [ExcelFact(Workbook = "", AddIn = @"..\..\..\..\ExcelDna.AddIn.RegistrationSample\bin\Debug\net6.0-windows\ExcelDna.AddIn.RegistrationSample-AddIn")]
+        [ExcelFact(Workbook = "", AddIn = AddInPath.RegistrationSample)]
         public void InstanceMemberRegistration()
         {
             {
@@ -62,7 +61,7 @@ namespace ExcelDna.RuntimeTests
             }
         }
 
-        [ExcelFact(Workbook = "", AddIn = @"..\..\..\..\ExcelDna.AddIn.RegistrationSample\bin\Debug\net6.0-windows\ExcelDna.AddIn.RegistrationSample-AddIn")]
+        [ExcelFact(Workbook = "", AddIn = AddInPath.RegistrationSample)]
         public void ParameterConversion()
         {
             {
@@ -209,7 +208,7 @@ namespace ExcelDna.RuntimeTests
             }
         }
 
-        [ExcelFact(Workbook = "", AddIn = @"..\..\..\..\ExcelDna.AddIn.RegistrationSample\bin\Debug\net6.0-windows\ExcelDna.AddIn.RegistrationSample-AddIn")]
+        [ExcelFact(Workbook = "", AddIn = AddInPath.RegistrationSample)]
         public void ParameterConversionNullableOptional()
         {
             {
@@ -277,7 +276,7 @@ namespace ExcelDna.RuntimeTests
             }
         }
 
-        [ExcelFact(Workbook = "", AddIn = @"..\..\..\..\ExcelDna.AddIn.RegistrationSample\bin\Debug\net6.0-windows\ExcelDna.AddIn.RegistrationSample-AddIn")]
+        [ExcelFact(Workbook = "", AddIn = AddInPath.RegistrationSample)]
         public void ParameterConversionNullable()
         {
             {
@@ -327,7 +326,7 @@ namespace ExcelDna.RuntimeTests
             }
         }
 
-        [ExcelFact(Workbook = "", AddIn = @"..\..\..\..\ExcelDna.AddIn.RegistrationSample\bin\Debug\net6.0-windows\ExcelDna.AddIn.RegistrationSample-AddIn")]
+        [ExcelFact(Workbook = "", AddIn = AddInPath.RegistrationSample)]
         public void ParameterConversionEnum()
         {
             {
@@ -430,7 +429,7 @@ namespace ExcelDna.RuntimeTests
             }
         }
 
-        [ExcelFact(Workbook = "", AddIn = @"..\..\..\..\ExcelDna.AddIn.RegistrationSample\bin\Debug\net6.0-windows\ExcelDna.AddIn.RegistrationSample-AddIn")]
+        [ExcelFact(Workbook = "", AddIn = AddInPath.RegistrationSample)]
         public void ParameterConversionComplex()
         {
             {
@@ -502,7 +501,7 @@ namespace ExcelDna.RuntimeTests
             }
         }
 
-        [ExcelFact(Workbook = "", AddIn = @"..\..\..\..\ExcelDna.AddIn.RegistrationSample\bin\Debug\net6.0-windows\ExcelDna.AddIn.RegistrationSample-AddIn")]
+        [ExcelFact(Workbook = "", AddIn = AddInPath.RegistrationSample)]
         public void ParameterConversionType()
         {
             {
@@ -522,7 +521,7 @@ namespace ExcelDna.RuntimeTests
             }
         }
 
-        [ExcelFact(Workbook = "", AddIn = @"..\..\..\..\ExcelDna.AddIn.RegistrationSample\bin\Debug\net6.0-windows\ExcelDna.AddIn.RegistrationSample-AddIn")]
+        [ExcelFact(Workbook = "", AddIn = AddInPath.RegistrationSample)]
         public void Params()
         {
             {
@@ -542,5 +541,4 @@ namespace ExcelDna.RuntimeTests
             }
         }
     }
-#endif
 }

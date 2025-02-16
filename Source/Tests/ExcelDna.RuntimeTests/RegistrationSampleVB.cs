@@ -3,10 +3,9 @@ using Range = Microsoft.Office.Interop.Excel.Range;
 
 namespace ExcelDna.RuntimeTests
 {
-#if DEBUG
     public class RegistrationSampleVB
     {
-        [ExcelFact(Workbook = "", AddIn = @"..\..\..\..\ExcelDna.AddIn.RegistrationSampleVB\bin\Debug\net6.0-windows\ExcelDna.AddIn.RegistrationSampleVB-AddIn")]
+        [ExcelFact(Workbook = "", AddIn = AddInPath.RegistrationSampleVB)]
         public void Optional()
         {
             {
@@ -21,7 +20,7 @@ namespace ExcelDna.RuntimeTests
             }
         }
 
-        [ExcelFact(Workbook = "", AddIn = @"..\..\..\..\ExcelDna.AddIn.RegistrationSampleVB\bin\Debug\net6.0-windows\ExcelDna.AddIn.RegistrationSampleVB-AddIn")]
+        [ExcelFact(Workbook = "", AddIn = AddInPath.RegistrationSampleVB)]
         public void Params()
         {
             {
@@ -36,7 +35,7 @@ namespace ExcelDna.RuntimeTests
             }
         }
 
-        [ExcelFact(Workbook = "", AddIn = @"..\..\..\..\ExcelDna.AddIn.RegistrationSampleVB\bin\Debug\net6.0-windows\ExcelDna.AddIn.RegistrationSampleVB-AddIn")]
+        [ExcelFact(Workbook = "", AddIn = AddInPath.RegistrationSampleVB)]
         public void Range()
         {
             {
@@ -56,5 +55,4 @@ namespace ExcelDna.RuntimeTests
             }
         }
     }
-#endif
 }

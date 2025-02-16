@@ -3,10 +3,9 @@ using Range = Microsoft.Office.Interop.Excel.Range;
 
 namespace ExcelDna.RuntimeTests
 {
-#if DEBUG
     public class RegistrationSampleFS
     {
-        [ExcelFact(Workbook = "", AddIn = @"..\..\..\..\ExcelDna.AddIn.RegistrationSampleFS\bin\Debug\net6.0-windows\ExcelDna.AddIn.RegistrationSampleFS-AddIn")]
+        [ExcelFact(Workbook = "", AddIn = AddInPath.RegistrationSampleFS)]
         public void Optional()
         {
             {
@@ -60,5 +59,4 @@ namespace ExcelDna.RuntimeTests
             }
         }
     }
-#endif
 }

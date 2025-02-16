@@ -94,3 +94,5 @@ void ShowHostError(const std::wstring& msg);
 std::wstring GetAddInFullPath();
 
 BOOL IsBufferUTF8(BYTE* buffer, DWORD bufferLength);
+
+int WriteResourceToFile(HMODULE hModuleXll, const std::wstring& resourceName, const std::wstring& resourceType, const std::wstring& filePath);

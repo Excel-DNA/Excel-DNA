@@ -26,6 +26,7 @@ internal static class ResourceHelper
         PDB = 4,
         NATIVE_LIBRARY = 5,
         DOC = 6,
+        NATIVE_ASSEMBLY = 7,
     }
 
     // TODO: Learn about locales

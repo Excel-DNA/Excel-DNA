@@ -5,6 +5,7 @@ set currentPath=%~dp0
 set basePath=%currentPath:~0,-1%
 set outputPath=%basePath%\nupkg
 set ExcelDnaVersion=%1
+set ExcelDnaNativeAOTVersion=%2
 
 if exist "%outputPath%\*.nupkg" del "%outputPath%\*.nupkg"
 
@@ -16,6 +17,9 @@ nuget.exe pack "%basePath%\ExcelDna.Templates\ExcelDna.Templates.nuspec" -BasePa
 @if errorlevel 1 goto end
 
 nuget.exe pack "%basePath%\ExcelDna.AddIn\ExcelDna.AddIn.nuspec" -BasePath "%basePath%\ExcelDna.AddIn" -OutputDirectory "%outputPath%" -Verbosity detailed -NonInteractive -Prop ExcelDnaVersion="%ExcelDnaVersion%"
+@if errorlevel 1 goto end
+
+nuget.exe pack "%basePath%\ExcelDna.AddIn.NativeAOT\ExcelDna.AddIn.NativeAOT.nuspec" -BasePath "%basePath%\ExcelDna.AddIn.NativeAOT" -OutputDirectory "%outputPath%" -Verbosity detailed -NonInteractive -Prop ExcelDnaNativeAOTVersion="%ExcelDnaNativeAOTVersion%"
 @if errorlevel 1 goto end
 
 nuget.exe pack "%basePath%\ExcelDna.Integration\ExcelDna.Integration.nuspec" -BasePath "%basePath%\ExcelDna.Integration" -OutputDirectory "%outputPath%" -Verbosity detailed -NonInteractive -Prop ExcelDnaVersion="%ExcelDnaVersion%" -Symbols -SymbolPackageFormat snupkg

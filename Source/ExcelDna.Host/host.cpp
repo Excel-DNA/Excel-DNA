@@ -38,7 +38,6 @@ hostfxr_close_fn close_fptr;
 
 // Forward declarations
 bool load_hostfxr(int& rc, std::wstring& loadError);
-int write_resource_to_file(HMODULE hModuleXll, const std::wstring& resourceName, const std::wstring& resourceType, const std::wstring& filePath);
 load_assembly_and_get_function_pointer_fn get_dotnet_load_assembly(HMODULE hModuleXll, int majorRuntimeVersion, const std::wstring& rollForward, const std::wstring& runtimeFrameworkVersion);
 
 // Provide a callback for any catastrophic failures.
@@ -54,7 +53,7 @@ void __stdcall preload_runtime(void) {}
 TempDir tempDir(L"ExcelDna.Host");
 
 // TODO: Might return the fn*
-int load_runtime_and_run(const std::wstring& basePath, XlAddInExportInfo* pExportInfo, HMODULE hModuleXll, LPCWSTR pathXll)
+int load_and_run(const std::wstring& basePath, XlAddInExportInfo* pExportInfo, HMODULE hModuleXll, LPCWSTR pathXll)
 {
 	//
 	// STEP 1: Load HostFxr and get exported hosting functions
@@ -109,7 +108,7 @@ int load_runtime_and_run(const std::wstring& basePath, XlAddInExportInfo* pExpor
 		hostFile = PathCombine(tempDir.GetPath(), L"ExcelDna.ManagedHost.dll");
 		if (!std::filesystem::exists(hostFile))
 		{
-			int r = write_resource_to_file(hModuleXll, L"EXCELDNA.MANAGEDHOST", L"ASSEMBLY", hostFile);
+			int r = WriteResourceToFile(hModuleXll, L"EXCELDNA.MANAGEDHOST", L"ASSEMBLY", hostFile);
 			if (r != EXIT_SUCCESS)
 				return r;
 		}
@@ -281,7 +280,7 @@ load_assembly_and_get_function_pointer_fn get_dotnet_load_assembly(HMODULE hModu
 		}
 		else
 		{
-			int r = write_resource_to_file(hModuleXll, L"__CUSTOM_RUNTIMECONFIG__", L"SOURCE", configFile);
+			int r = WriteResourceToFile(hModuleXll, L"__CUSTOM_RUNTIMECONFIG__", L"SOURCE", configFile);
 			if (r != EXIT_SUCCESS)
 				return nullptr;
 		}
@@ -332,44 +331,4 @@ load_assembly_and_get_function_pointer_fn get_dotnet_load_assembly(HMODULE hModu
 
 	close_fptr(cxt);
 	return (load_assembly_and_get_function_pointer_fn)load_assembly_and_get_function_pointer;
-}
-
-int write_resource_to_file(HMODULE hModuleXll, const std::wstring& resourceName, const std::wstring& resourceType, const std::wstring& filePath)
-{
-	HRSRC hResManagedHost = FindResource(hModuleXll, resourceName.c_str(), resourceType.c_str());
-	if (hResManagedHost == NULL)
-	{
-		ShowHostError(L"Failure to find resource " + resourceName);
-		return EXIT_FAILURE;
-	}
-
-	HGLOBAL hManagedHost = LoadResource(hModuleXll, hResManagedHost);
-	if (hManagedHost == NULL)
-	{
-		ShowHostError(L"Failure to load resource " + resourceName);
-		return EXIT_FAILURE;
-	}
-
-	void* buf = LockResource(hManagedHost);
-	if (buf == NULL)
-	{
-		ShowHostError(L"Failure to lock resource " + resourceName);
-		return EXIT_FAILURE;
-	}
-
-	DWORD resSize = SizeofResource(hModuleXll, hResManagedHost);
-	SafeByteArray safeBytes(buf, resSize);
-	byte* pData;
-	int nSize = safeBytes.AccessData(&pData);
-
-	HRESULT hr = WriteAllBytes(filePath, pData, nSize);
-	if (FAILED(hr))
-	{
-		std::wstringstream stream;
-		stream << L"Saving " << resourceName << L" failed: " << std::hex << std::showbase << hr;
-		ShowHostError(stream.str());
-		return EXIT_FAILURE;
-	}
-
-	return EXIT_SUCCESS;
 }

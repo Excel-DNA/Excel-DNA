@@ -62,6 +62,14 @@
       <Link>ExcelDna.AddIn.props</Link>
       <SubType>Designer</SubType>
     </None>
+    <None Include="..\..\Package\ExcelDna.AddIn.NativeAOT\build\ExcelDna.AddIn.NativeAOT.targets">
+      <Link>ExcelDna.AddIn.NativeAOT.targets</Link>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="..\..\Package\ExcelDna.AddIn.NativeAOT\build\ExcelDna.AddIn.NativeAOT.props">
+      <Link>ExcelDna.AddIn.NativeAOT.props</Link>
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
 
   <Import Project="..\ExcelDna.PackedResources\ExcelDna.PackedResources.projitems" Label="Shared" />

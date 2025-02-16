@@ -4,12 +4,11 @@ using Range = Microsoft.Office.Interop.Excel.Range;
 
 namespace ExcelDna.RuntimeTests
 {
-#if DEBUG
     [ExcelTestSettings(OutOfProcess = true)]
     [Collection("OutOfProcess")]
     public class RegistrationSampleOutOfProcessFS
     {
-        [ExcelFact(Workbook = "", AddIn = @"..\..\..\..\ExcelDna.AddIn.RegistrationSampleFS\bin\Debug\net6.0-windows\ExcelDna.AddIn.RegistrationSampleFS-AddIn")]
+        [ExcelFact(Workbook = "", AddIn = AddInPath.RegistrationSampleFS)]
         public void AsyncSleep()
         {
             {
@@ -44,7 +43,7 @@ namespace ExcelDna.RuntimeTests
             }
         }
 
-        [ExcelFact(Workbook = "", AddIn = @"..\..\..\..\ExcelDna.AddIn.RegistrationSampleFS\bin\Debug\net6.0-windows\ExcelDna.AddIn.RegistrationSampleFS-AddIn")]
+        [ExcelFact(Workbook = "", AddIn = AddInPath.RegistrationSampleFS)]
         public void Timer()
         {
             {
@@ -83,5 +82,4 @@ namespace ExcelDna.RuntimeTests
             }
         }
     }
-#endif
 }

@@ -18,7 +18,9 @@ namespace ExcelDna.ManagedHost
             : base($"ExcelDnaAssemblyLoadContext_{Path.GetFileNameWithoutExtension(basePath)}", isCollectible: isCollectible)
         {
             _basePath = basePath;
-            _resolver = new AssemblyDependencyResolver(basePath);
+
+            if (System.Runtime.CompilerServices.RuntimeFeature.IsDynamicCodeSupported)
+                _resolver = new AssemblyDependencyResolver(basePath);
 
 #if DEBUG
             this.Resolving += ExcelDnaAssemblyLoadContext_Resolving;
@@ -31,7 +33,7 @@ namespace ExcelDna.ManagedHost
             // CONSIDER: Should we consider priorities for packed vs local files?
 
             // First try the regular load path
-            string assemblyPath = _resolver.ResolveAssemblyToPath(assemblyName);
+            string assemblyPath = _resolver?.ResolveAssemblyToPath(assemblyName);
             if (assemblyPath != null)
             {
                 return LoadFromAssemblyPath(assemblyPath);
@@ -48,7 +50,7 @@ namespace ExcelDna.ManagedHost
                 libraryPath = cachedValue;
 
             if (libraryPath == null)
-                libraryPath = _resolver.ResolveUnmanagedDllToPath(unmanagedDllName);
+                libraryPath = _resolver?.ResolveUnmanagedDllToPath(unmanagedDllName);
 
             if (libraryPath == null)
                 libraryPath = ResolveDllFromBaseDirectory(unmanagedDllName);

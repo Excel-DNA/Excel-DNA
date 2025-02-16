@@ -5,6 +5,8 @@
 #include <tchar.h>
 #include <comdef.h>
 #include <algorithm>
+#include <iostream>
+#include <filesystem>
 #include "dnainfo.h"
 
 extern HMODULE hModuleCurrent;
@@ -414,4 +416,44 @@ BOOL IsBufferUTF8(BYTE* buffer, DWORD bufferLength)
 	}
 	// Might be ANSI or some other code page. Treated as UTF-8 here.
 	return true;
+}
+
+int WriteResourceToFile(HMODULE hModuleXll, const std::wstring& resourceName, const std::wstring& resourceType, const std::wstring& filePath)
+{
+	HRSRC hResManagedHost = FindResource(hModuleXll, resourceName.c_str(), resourceType.c_str());
+	if (hResManagedHost == NULL)
+	{
+		ShowHostError(L"Failure to find resource " + resourceName);
+		return EXIT_FAILURE;
+	}
+
+	HGLOBAL hManagedHost = LoadResource(hModuleXll, hResManagedHost);
+	if (hManagedHost == NULL)
+	{
+		ShowHostError(L"Failure to load resource " + resourceName);
+		return EXIT_FAILURE;
+	}
+
+	void* buf = LockResource(hManagedHost);
+	if (buf == NULL)
+	{
+		ShowHostError(L"Failure to lock resource " + resourceName);
+		return EXIT_FAILURE;
+	}
+
+	DWORD resSize = SizeofResource(hModuleXll, hResManagedHost);
+	SafeByteArray safeBytes(buf, resSize);
+	byte* pData;
+	int nSize = safeBytes.AccessData(&pData);
+
+	HRESULT hr = WriteAllBytes(filePath, pData, nSize);
+	if (FAILED(hr))
+	{
+		std::wstringstream stream;
+		stream << L"Saving " << resourceName << L" failed: " << std::hex << std::showbase << hr;
+		ShowHostError(stream.str());
+		return EXIT_FAILURE;
+	}
+
+	return EXIT_SUCCESS;
 }

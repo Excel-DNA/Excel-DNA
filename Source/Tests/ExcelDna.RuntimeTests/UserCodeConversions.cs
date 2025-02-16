@@ -3,10 +3,9 @@ using Range = Microsoft.Office.Interop.Excel.Range;
 
 namespace ExcelDna.RuntimeTests
 {
-#if DEBUG
     public class UserCodeConversions
     {
-        [ExcelFact(Workbook = "", AddIn = @"..\..\..\..\ExcelDna.AddIn.RuntimeTests\bin\Debug\net6.0-windows\ExcelDna.AddIn.RuntimeTests-AddIn")]
+        [ExcelFact(Workbook = "", AddIn = AddInPath.RuntimeTests)]
         public void ReferenceToRange()
         {
             {
@@ -16,5 +15,4 @@ namespace ExcelDna.RuntimeTests
             }
         }
     }
-#endif
 }

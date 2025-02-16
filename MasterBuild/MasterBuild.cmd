@@ -1,6 +1,7 @@
 setlocal
 
 set PackageVersion=1.9.0-alpha3
+set PackageNativeAOTVersion=0.1.0
 set PackageReferenceVersion=1.9.0-alpha3
 set DllVersion=1.9.0.3
 
@@ -24,7 +25,7 @@ PowerShell "(Get-Content %targetsfile%) -replace '_VERSION_', '%PackageReference
 @if errorlevel 1 goto end
 
 cd %rootPath%\ExcelDna\Build
-call BuildPackages.bat %PackageVersion% %DllVersion% %MSBuildPath%
+call BuildPackages.bat %PackageVersion% %PackageNativeAOTVersion% %DllVersion% %MSBuildPath%
 @if errorlevel 1 goto end
 
 cd %rootPath%\Registration\Build

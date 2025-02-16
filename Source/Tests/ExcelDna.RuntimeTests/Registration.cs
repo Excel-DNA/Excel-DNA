@@ -3,10 +3,9 @@ using Range = Microsoft.Office.Interop.Excel.Range;
 
 namespace ExcelDna.RuntimeTests
 {
-#if DEBUG
     public class Registration
     {
-        [ExcelFact(Workbook = "", AddIn = @"..\..\..\..\ExcelDna.AddIn.RuntimeTests\bin\Debug\net6.0-windows\ExcelDna.AddIn.RuntimeTests-AddIn")]
+        [ExcelFact(Workbook = "", AddIn = AddInPath.RuntimeTests)]
         public void SayHello()
         {
             Range functionRange = ((Worksheet)ExcelDna.Testing.Util.Workbook.Sheets[1]).Range["B1:B1"];
@@ -14,7 +13,7 @@ namespace ExcelDna.RuntimeTests
             Assert.Equal("Hello world", functionRange.Value.ToString());
         }
 
-        [ExcelFact(Workbook = "", AddIn = @"..\..\..\..\ExcelDna.AddIn.RuntimeTests\bin\Debug\net6.0-windows\ExcelDna.AddIn.RuntimeTests-AddIn")]
+        [ExcelFact(Workbook = "", AddIn = AddInPath.RuntimeTests)]
         public void Double()
         {
             Range functionRange = ((Worksheet)ExcelDna.Testing.Util.Workbook.Sheets[1]).Range["B1:B1"];
@@ -25,7 +24,7 @@ namespace ExcelDna.RuntimeTests
             Assert.Equal("0", functionRange.Value.ToString());
         }
 
-        [ExcelFact(Workbook = "", AddIn = @"..\..\..\..\ExcelDna.AddIn.RuntimeTests\bin\Debug\net6.0-windows\ExcelDna.AddIn.RuntimeTests-AddIn")]
+        [ExcelFact(Workbook = "", AddIn = AddInPath.RuntimeTests)]
         public void DateTime()
         {
             Range functionRange = ((Worksheet)ExcelDna.Testing.Util.Workbook.Sheets[1]).Range["B1:B1"];
@@ -33,7 +32,7 @@ namespace ExcelDna.RuntimeTests
             Assert.Equal("10/20/2024 12:00:00 AM", functionRange.Value.ToString());
         }
 
-        [ExcelFact(Workbook = "", AddIn = @"..\..\..\..\ExcelDna.AddIn.RuntimeTests\bin\Debug\net6.0-windows\ExcelDna.AddIn.RuntimeTests-AddIn")]
+        [ExcelFact(Workbook = "", AddIn = AddInPath.RuntimeTests)]
         public void NullableDouble()
         {
             Range functionRange = ((Worksheet)ExcelDna.Testing.Util.Workbook.Sheets[1]).Range["B1:B1"];
@@ -44,7 +43,7 @@ namespace ExcelDna.RuntimeTests
             Assert.Equal("Nullable VAL: NULL", functionRange.Value.ToString());
         }
 
-        [ExcelFact(Workbook = "", AddIn = @"..\..\..\..\ExcelDna.AddIn.RuntimeTests\bin\Debug\net6.0-windows\ExcelDna.AddIn.RuntimeTests-AddIn")]
+        [ExcelFact(Workbook = "", AddIn = AddInPath.RuntimeTests)]
         public void NullableDateTime()
         {
             Range functionRange = ((Worksheet)ExcelDna.Testing.Util.Workbook.Sheets[1]).Range["B1:B1"];
@@ -55,7 +54,7 @@ namespace ExcelDna.RuntimeTests
             Assert.Equal("Nullable DateTime: NULL", functionRange.Value.ToString());
         }
 
-        [ExcelFact(Workbook = "", AddIn = @"..\..\..\..\ExcelDna.AddIn.RuntimeTests\bin\Debug\net6.0-windows\ExcelDna.AddIn.RuntimeTests-AddIn")]
+        [ExcelFact(Workbook = "", AddIn = AddInPath.RuntimeTests)]
         public void OptionalDouble()
         {
             Range functionRange = ((Worksheet)ExcelDna.Testing.Util.Workbook.Sheets[1]).Range["B1:B1"];
@@ -66,7 +65,7 @@ namespace ExcelDna.RuntimeTests
             Assert.Equal("Optional VAL: 1.23", functionRange.Value.ToString());
         }
 
-        [ExcelFact(Workbook = "", AddIn = @"..\..\..\..\ExcelDna.AddIn.RuntimeTests\bin\Debug\net6.0-windows\ExcelDna.AddIn.RuntimeTests-AddIn")]
+        [ExcelFact(Workbook = "", AddIn = AddInPath.RuntimeTests)]
         public void OptionalDateTime()
         {
             Range functionRange = ((Worksheet)ExcelDna.Testing.Util.Workbook.Sheets[1]).Range["B1:B1"];
@@ -77,7 +76,7 @@ namespace ExcelDna.RuntimeTests
             Assert.Equal("Optional DateTime: 1/1/0001 12:00:00 AM", functionRange.Value.ToString());
         }
 
-        [ExcelFact(Workbook = "", AddIn = @"..\..\..\..\ExcelDna.AddIn.RuntimeTests\bin\Debug\net6.0-windows\ExcelDna.AddIn.RuntimeTests-AddIn")]
+        [ExcelFact(Workbook = "", AddIn = AddInPath.RuntimeTests)]
         public void Enum()
         {
             Range functionRange = ((Worksheet)ExcelDna.Testing.Util.Workbook.Sheets[1]).Range["B1:B1"];
@@ -91,7 +90,7 @@ namespace ExcelDna.RuntimeTests
             Assert.Equal("Enum VAL: Utc", functionRange.Value.ToString());
         }
 
-        [ExcelFact(Workbook = "", AddIn = @"..\..\..\..\ExcelDna.AddIn.RuntimeTests\bin\Debug\net6.0-windows\ExcelDna.AddIn.RuntimeTests-AddIn")]
+        [ExcelFact(Workbook = "", AddIn = AddInPath.RuntimeTests)]
         public void EnumReturn()
         {
             Range functionRange = ((Worksheet)ExcelDna.Testing.Util.Workbook.Sheets[1]).Range["B1:B1"];
@@ -102,7 +101,7 @@ namespace ExcelDna.RuntimeTests
             Assert.Equal("Local", functionRange.Value.ToString());
         }
 
-        [ExcelFact(Workbook = "", AddIn = @"..\..\..\..\ExcelDna.AddIn.RuntimeTests\bin\Debug\net6.0-windows\ExcelDna.AddIn.RuntimeTests-AddIn")]
+        [ExcelFact(Workbook = "", AddIn = AddInPath.RuntimeTests)]
         public void MapArray()
         {
             Range a1 = ((Worksheet)ExcelDna.Testing.Util.Workbook.Sheets[1]).Range["A1:A1"];
@@ -127,7 +126,7 @@ namespace ExcelDna.RuntimeTests
             Assert.Equal("Array element VAL: Unspecified", b3.Value.ToString());
         }
 
-        [ExcelFact(Workbook = "", AddIn = @"..\..\..\..\ExcelDna.AddIn.RuntimeTests\bin\Debug\net6.0-windows\ExcelDna.AddIn.RuntimeTests-AddIn")]
+        [ExcelFact(Workbook = "", AddIn = AddInPath.RuntimeTests)]
         public void AsyncTaskInstant()
         {
             Range functionRange = ((Worksheet)ExcelDna.Testing.Util.Workbook.Sheets[1]).Range["B1:B1"];
@@ -136,7 +135,7 @@ namespace ExcelDna.RuntimeTests
             Assert.Equal("Hello async task world", functionRange.Value.ToString());
         }
 
-        [ExcelFact(Workbook = "", AddIn = @"..\..\..\..\ExcelDna.AddIn.RuntimeTests\bin\Debug\net6.0-windows\ExcelDna.AddIn.RuntimeTests-AddIn")]
+        [ExcelFact(Workbook = "", AddIn = AddInPath.RuntimeTests)]
         public void DefaultAsyncReturnValue()
         {
             Range functionRange = ((Worksheet)ExcelDna.Testing.Util.Workbook.Sheets[1]).Range["B1:B1"];
@@ -145,7 +144,7 @@ namespace ExcelDna.RuntimeTests
             Assert.Equal(-2146826246, functionRange.Value); // #N/A
         }
 
-        [ExcelFact(Workbook = "", AddIn = @"..\..\..\..\ExcelDna.AddIn.RuntimeTests\bin\Debug\net6.0-windows\ExcelDna.AddIn.RuntimeTests-AddIn")]
+        [ExcelFact(Workbook = "", AddIn = AddInPath.RuntimeTests)]
         public void GettingDataAsyncReturnValue()
         {
             Range functionRange = ((Worksheet)ExcelDna.Testing.Util.Workbook.Sheets[1]).Range["B1:B1"];
@@ -154,7 +153,7 @@ namespace ExcelDna.RuntimeTests
             Assert.Equal(-2146826245, functionRange.Value); // #GETTING_DATA
         }
 
-        [ExcelFact(Workbook = "", AddIn = @"..\..\..\..\ExcelDna.AddIn.RuntimeTests\bin\Debug\net6.0-windows\ExcelDna.AddIn.RuntimeTests-AddIn")]
+        [ExcelFact(Workbook = "", AddIn = AddInPath.RuntimeTests)]
         public void TaskInstant()
         {
             Range functionRange = ((Worksheet)ExcelDna.Testing.Util.Workbook.Sheets[1]).Range["B1:B1"];
@@ -163,7 +162,7 @@ namespace ExcelDna.RuntimeTests
             Assert.Equal("Hello task world", functionRange.Value.ToString());
         }
 
-        [ExcelFact(Workbook = "", AddIn = @"..\..\..\..\ExcelDna.AddIn.RuntimeTests\bin\Debug\net6.0-windows\ExcelDna.AddIn.RuntimeTests-AddIn")]
+        [ExcelFact(Workbook = "", AddIn = AddInPath.RuntimeTests)]
         public void StringArray()
         {
             Range a1 = ((Worksheet)ExcelDna.Testing.Util.Workbook.Sheets[1]).Range["A1:A1"];
@@ -181,7 +180,7 @@ namespace ExcelDna.RuntimeTests
             Assert.Equal("StringArray VALS: 12.3World", functionRange.Value.ToString());
         }
 
-        [ExcelFact(Workbook = "", AddIn = @"..\..\..\..\ExcelDna.AddIn.RuntimeTests\bin\Debug\net6.0-windows\ExcelDna.AddIn.RuntimeTests-AddIn")]
+        [ExcelFact(Workbook = "", AddIn = AddInPath.RuntimeTests)]
         public void StringArray2D()
         {
             Range a1 = ((Worksheet)ExcelDna.Testing.Util.Workbook.Sheets[1]).Range["A1"];
@@ -208,7 +207,7 @@ namespace ExcelDna.RuntimeTests
             Assert.Equal("StringArray2D VALS: 15 2.36.7 HelloWorld ", functionRange.Value.ToString());
         }
 
-        [ExcelFact(Workbook = "", AddIn = @"..\..\..\..\ExcelDna.AddIn.RuntimeTests\bin\Debug\net6.0-windows\ExcelDna.AddIn.RuntimeTests-AddIn")]
+        [ExcelFact(Workbook = "", AddIn = AddInPath.RuntimeTests)]
         public void UserDefinedParameterConversions()
         {
             Range functionRange = ((Worksheet)ExcelDna.Testing.Util.Workbook.Sheets[1]).Range["B1:B1"];
@@ -223,7 +222,7 @@ namespace ExcelDna.RuntimeTests
             Assert.Equal("The TestType2 value is From TestType1 world2", functionRange.Value.ToString());
         }
 
-        [ExcelFact(Workbook = "", AddIn = @"..\..\..\..\ExcelDna.AddIn.RuntimeTests\bin\Debug\net6.0-windows\ExcelDna.AddIn.RuntimeTests-AddIn")]
+        [ExcelFact(Workbook = "", AddIn = AddInPath.RuntimeTests)]
         public void FunctionExecutionHandlerExtended()
         {
             Range functionRange = ((Worksheet)ExcelDna.Testing.Util.Workbook.Sheets[1]).Range["B1"];
@@ -233,7 +232,7 @@ namespace ExcelDna.RuntimeTests
             Assert.True(functionRange.Value.ToString().Contains("MyVersion2 - OnSuccess - Result: The Version value with field count 2 is 5.4"));
         }
 
-        [ExcelFact(Workbook = "", AddIn = @"..\..\..\..\ExcelDna.AddIn.RuntimeTests\bin\Debug\net6.0-windows\ExcelDna.AddIn.RuntimeTests-AddIn")]
+        [ExcelFact(Workbook = "", AddIn = AddInPath.RuntimeTests)]
         public void FunctionExecutionHandlerStandard()
         {
             Range functionRange = ((Worksheet)ExcelDna.Testing.Util.Workbook.Sheets[1]).Range["B1"];
@@ -243,7 +242,7 @@ namespace ExcelDna.RuntimeTests
             Assert.True(functionRange.Value.ToString().Contains("SayHello - OnSuccess - Result: Hello FunctionExecutionHandlerStandard"));
         }
 
-        [ExcelFact(Workbook = "", AddIn = @"..\..\..\..\ExcelDna.AddIn.RuntimeTests\bin\Debug\net6.0-windows\ExcelDna.AddIn.RuntimeTests-AddIn")]
+        [ExcelFact(Workbook = "", AddIn = AddInPath.RuntimeTests)]
         public void FunctionExecutionHandlerWithAttribute()
         {
             Range functionRange = ((Worksheet)ExcelDna.Testing.Util.Workbook.Sheets[1]).Range["B1"];
@@ -253,7 +252,7 @@ namespace ExcelDna.RuntimeTests
             Assert.True(functionRange.Value.ToString().Contains("ID=7 SayHelloWithLoggingID - OnSuccess - Result: Hello FunctionExecutionHandlerWithAttribute"));
         }
 
-        [ExcelFact(Workbook = "", AddIn = @"..\..\..\..\ExcelDna.AddIn.RuntimeTests\bin\Debug\net6.0-windows\ExcelDna.AddIn.RuntimeTests-AddIn")]
+        [ExcelFact(Workbook = "", AddIn = AddInPath.RuntimeTests)]
         public void Observable()
         {
             {
@@ -294,7 +293,7 @@ namespace ExcelDna.RuntimeTests
             }
         }
 
-        [ExcelFact(Workbook = "", AddIn = @"..\..\..\..\ExcelDna.AddIn.RuntimeTests\bin\Debug\net6.0-windows\ExcelDna.AddIn.RuntimeTests-AddIn")]
+        [ExcelFact(Workbook = "", AddIn = AddInPath.RuntimeTests)]
         public void ObjectHandles()
         {
             string b1;
@@ -409,7 +408,7 @@ namespace ExcelDna.RuntimeTests
             }
         }
 
-        [ExcelFact(Workbook = "", AddIn = @"..\..\..\..\ExcelDna.AddIn.RuntimeTests\bin\Debug\net6.0-windows\ExcelDna.AddIn.RuntimeTests-AddIn")]
+        [ExcelFact(Workbook = "", AddIn = AddInPath.RuntimeTests)]
         public void TaskObjectHandles()
         {
             {
@@ -463,7 +462,7 @@ namespace ExcelDna.RuntimeTests
             }
         }
 
-        [ExcelFact(Workbook = "", AddIn = @"..\..\..\..\ExcelDna.AddIn.RuntimeTests\bin\Debug\net6.0-windows\ExcelDna.AddIn.RuntimeTests-AddIn")]
+        [ExcelFact(Workbook = "", AddIn = AddInPath.RuntimeTests)]
         public void ObjectHandlesDisposable()
         {
             string b1;
@@ -511,7 +510,7 @@ namespace ExcelDna.RuntimeTests
             }
         }
 
-        [ExcelFact(Workbook = "", AddIn = @"..\..\..\..\ExcelDna.AddIn.RuntimeTests\bin\Debug\net6.0-windows\ExcelDna.AddIn.RuntimeTests-AddIn")]
+        [ExcelFact(Workbook = "", AddIn = AddInPath.RuntimeTests)]
         public void TaskObjectHandlesDisposable()
         {
             string b1;
@@ -570,7 +569,7 @@ namespace ExcelDna.RuntimeTests
             }
         }
 
-        [ExcelFact(Workbook = "", AddIn = @"..\..\..\..\ExcelDna.AddIn.RuntimeTests\bin\Debug\net6.0-windows\ExcelDna.AddIn.RuntimeTests-AddIn")]
+        [ExcelFact(Workbook = "", AddIn = AddInPath.RuntimeTests)]
         public void Range()
         {
             {
@@ -590,7 +589,7 @@ namespace ExcelDna.RuntimeTests
             }
         }
 
-        [ExcelFact(Workbook = "", AddIn = @"..\..\..\..\ExcelDna.AddIn.RuntimeTests\bin\Debug\net6.0-windows\ExcelDna.AddIn.RuntimeTests-AddIn")]
+        [ExcelFact(Workbook = "", AddIn = AddInPath.RuntimeTests)]
         public void Params()
         {
             {
@@ -610,5 +609,4 @@ namespace ExcelDna.RuntimeTests
             }
         }
     }
-#endif
 }
